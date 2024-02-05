@@ -1,6 +1,15 @@
 FROM python:3.8-slim
-COPY . /app
-WORKDIR /app
-RUN pip install flask
-CMD ["python", "app/app.py"]
 
+WORKDIR /app
+
+COPY app/ /app/
+
+COPY requirements.txt /app/
+
+RUN pip install -r requirements.txt
+
+EXPOSE 5000
+
+ENV NAME World
+
+CMD ["python", "/app/app.py"]

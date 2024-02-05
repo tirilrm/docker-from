@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -42,7 +42,35 @@ books = [
 
 @app.route("/")
 def home():
-    return "Request a book"
+    return """
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Book Request</title>
+	<style>
+	body, html {
+		height: 100%;
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #505c6e;
+	}
+	h1 {
+		font-family: comic sans;
+		color: #ffffff;
+		text-shadow: 2px 2px 4px #000000;
+		font-size: 48px;
+	}
+	</style>
+	</head>
+	<body>
+	<h1>Request a Book</h1>
+	</body>
+	</html>
+	"""
 
 # Keep the original get_book route
 @app.route('/get_book', methods=['GET'])
